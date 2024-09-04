@@ -290,11 +290,7 @@
           blocks.forEach((block) => {
             let blockPosition = block.getBoundingClientRect().top;
             if (blockPosition < windowHeight - 100) {
-              block.style.opacity = "1";
-              block.style.transform = "translateX(0)";
-            } else {
-              block.style.opacity = "0";
-              block.style.transform = "translateX(20px)";
+              block.classList.add("block__show");
             }
           });
         }
