@@ -283,21 +283,24 @@
         countdownTimer();
         timerId = setInterval(countdownTimer, 1000);
       });
-      function onEntry(entry) {
-        entry.forEach((change) => {
-          if (change.isIntersecting) {
-            change.target.classList.add("block__show");
-          }
-        });
-      }
-      let options = {
-        threshold: [0.25],
-      };
-      let observer = new IntersectionObserver(onEntry, options);
-      let elements = document.querySelectorAll(".block");
-      for (let elm of elements) {
-        observer.observe(elm);
-      }
+      document.addEventListener("DOMContentLoaded", function () {
+        let blocks = document.querySelectorAll(".block");
+        function checkBlocksVisibility() {
+          let windowHeight = window.innerHeight;
+          blocks.forEach((block) => {
+            let blockPosition = block.getBoundingClientRect().top;
+            if (blockPosition < windowHeight - 100) {
+              block.style.opacity = "1";
+              block.style.transform = "translateX(0)";
+            } else {
+              block.style.opacity = "0";
+              block.style.transform = "translateX(20px)";
+            }
+          });
+        }
+        checkBlocksVisibility();
+        window.addEventListener("scroll", checkBlocksVisibility);
+      });
     </script>
   </body>
 </html>

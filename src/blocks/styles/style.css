@@ -87,17 +87,10 @@ body {
 
 .block {
   margin-block-end: 100px;
-  opacity: 0;
   text-align: center;
   transition:
     opacity 1.5s,
     transform 1.5s;
-  transform: translateX(20px);
-}
-
-.block.block__show {
-  opacity: 1;
-  transform: translateX(0%);
 }
 
 .block__title {
