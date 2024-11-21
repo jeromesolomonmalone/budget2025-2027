@@ -9,6 +9,7 @@
   --font-size-xxs: 11px;
   --font-size-title: 89px;
   --font-size-subtitle: 40px;
+  --font-size-number-xxxl: 10.5vw;
   --font-size-number-xxl: 133px;
   --font-size-number-main: 60px;
   --line-height-main: calc(27 / 18);
@@ -36,14 +37,15 @@
   --column-1: #2c3878;
   --column-2: #115f9a;
   --column-3: #1984c5;
-  --column-4: #22a7f0;
-  --column-5: #48b5c4;
-  --column-6: #0d99ff;
+  --column-4: #1e96db;
+  --column-5: #22a7f0;
+  --column-6: #48b5c4;
   --column-7: #76c68f;
-  --column-8: #a6d75b;
-  --column-9: #c9e52f;
-  --column-10: #d0ee11;
-  --column-11: #d0f400;
+  --column-8: #8ecf75;
+  --column-9: #a6d75b;
+  --column-10: #c9e52f;
+  --column-11: #d0ee11;
+  --column-12: #d0f400;
 }
 
 *,
@@ -253,27 +255,71 @@ body {
   top: 0;
   right: 0;
   z-index: 100;
-  display: flex;
-  row-gap: 0.5rem;
-  column-gap: 0.3rem;
   margin-inline-end: 12%;
   margin-block-start: clamp(8.75rem, 8.75rem + 0vw, 8.75rem);
-  padding: 40px;
-  background-color: var(--color-back-main);
+}
+
+.background__videos {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.background__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  inline-size: 100%;
+  block-size: auto;
+}
+
+.cover__year__numbers {
+  position: relative;
+  display: flex;
 }
 
 .cover__year__main {
-  color: var(--color-text-on-the-dark);
+  position: relative;
+  z-index: 1;
+  padding: 40px 0 40px 40px;
+  color: black;
   font-weight: var(--font-weight-bolder);
-  font-size: var(--font-size-number-xxl);
+  font-size: var(--font-size-number-xxxl);
   line-height: 0.7;
+  background-image: linear-gradient(var(--color-cover-main) 10%, #cfbb83);
+  -webkit-mix-blend-mode: screen;
+  mix-blend-mode: screen;
+}
+
+.cover__year__adds {
+  position: relative;
+  z-index: 1;
+  color: black;
+  background-image: linear-gradient(var(--color-cover-main) 10%, #cfbb83);
+  -webkit-mix-blend-mode: screen;
+  mix-blend-mode: screen;
 }
 
 .cover__year__add {
-  color: var(--color-text-on-the-dark);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-bolder);
+  font-size: calc(var(--font-size-number-xxxl) / 3.3);
   line-height: 0.8;
+}
+
+.cover__year__add:first-child {
+  padding: 40px 40px 0 0.5rem;
+}
+
+.cover__year__add:last-child {
+  padding: 0 40px 40px 0.5rem;
+}
+
+.cover__year__add:not(:first-child):not(:last-child) {
+  padding: 0 40px 0 0.5rem;
 }
 
 .cover__images {
@@ -308,7 +354,7 @@ body {
   grid-template-columns: auto 1fr;
   align-items: center;
   gap: 0.5rem;
-  inline-size: 60%;
+  inline-size: 65%;
 }
 
 .block__heading__title {
@@ -318,7 +364,7 @@ body {
 
 .block__heading__image {
   display: grid;
-  grid-template-columns: 3fr auto 1fr;
+  grid-template-columns: 1fr auto 6rem;
   align-items: center;
   gap: 0.5rem;
 }
@@ -327,6 +373,10 @@ body {
 .block__heading__image::after {
   content: "";
   border-block-end: 1px solid var(--color-text-main);
+}
+
+.block__heading__image::before {
+  min-inline-size: 6rem;
 }
 
 .block__heading__img {
@@ -430,6 +480,10 @@ body {
   line-height: 0.75;
 }
 
+.glossary__term__special::before {
+  display: none;
+}
+
 .concept__main {
   margin: 0 auto;
   text-align: center;
@@ -499,8 +553,10 @@ body {
 }
 
 .system__card {
+  position: relative;
   border-radius: 6px;
   box-shadow: 10px 10px 40px 0 #0000000d;
+  overflow: hidden;
   background: var(--color-text-on-the-dark);
   counter-reset: history__district__item;
 }
@@ -517,6 +573,17 @@ body {
   margin-block-end: var(--gap-main);
   overflow: hidden;
   aspect-ratio: 1.7778/1;
+}
+
+.system__card__cover__cursor {
+  position: absolute;
+  right: 10%;
+  bottom: 10%;
+  z-index: 2;
+  vertical-align: middle;
+  transform: rotate(-25deg);
+  inline-size: 30px;
+  block-size: 30px;
 }
 
 .history__cards .system__card__cover {
@@ -843,13 +910,13 @@ body {
 .history__map__lazarevka {
   top: 30%;
   left: 0;
-  margin-inline-start: clamp(12.5rem, -8.1897rem + 25.8621vw, 17.1875rem);
+  margin-inline-start: clamp(10.9375rem, -3.608rem + 18.1818vw, 17.1875rem);
 }
 
 .history__map__hosta {
   top: 53%;
-  right: 0;
-  margin-inline-end: clamp(25rem, -9.4828rem + 43.1034vw, 32.8125rem);
+  left: 0;
+  margin-inline-start: clamp(23.125rem, -6.6932rem + 37.2727vw, 35.9375rem);
 }
 
 .history__map__centr {
@@ -860,14 +927,14 @@ body {
 
 .history__map__sirius {
   top: 83%;
-  right: 0;
-  margin-inline-end: clamp(22.1875rem, -10.9159rem + 41.3793vw, 29.6875rem);
+  left: 0;
+  margin-inline-start: clamp(27.1875rem, -5.5398rem + 40.9091vw, 41.25rem);
 }
 
 .history__map__adler {
   top: 65%;
-  right: 0;
-  margin-inline-end: clamp(12.5rem, -8.1897rem + 25.8621vw, 17.1875rem);
+  left: 0;
+  margin-inline-start: clamp(34.375rem, -9.2614rem + 54.5455vw, 53.125rem);
 }
 
 .history__cards {
@@ -890,17 +957,16 @@ body {
   content: counter(history__district__item) ".";
   display: inline-block;
   margin-inline-end: 0.5rem;
-  vertical-align: top;
-  font-size: var(--font-size-xs);
-  line-height: var(--line-height-xs);
+  vertical-align: middle;
+  font-size: var(--font-size-xxs);
+  line-height: var(--line-height-xxs);
 }
 
 .predict__graphics {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   row-gap: var(--gap-main);
-  column-gap: 4%;
+  column-gap: calc(var(--gap-main) * 2);
 }
 
 .predict__graphic {
@@ -910,7 +976,6 @@ body {
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  inline-size: 48%;
 }
 
 .predict__graphic__columns {
@@ -973,8 +1038,12 @@ body {
   background: var(--column-10);
 }
 
-.predict__graphic:last-of-type .predict__graphic__value__column {
+.predict__graphic:nth-child(11) .predict__graphic__value__column {
   background: var(--column-11);
+}
+
+.predict__graphic:last-of-type .predict__graphic__value__column {
+  background: var(--column-12);
 }
 
 .table {
@@ -1027,11 +1096,9 @@ td:not(:first-of-type) {
 }
 
 .directions__small {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  row-gap: var(--gap-main);
-  column-gap: 3.5%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-main);
   counter-reset: directions__item;
 }
 
@@ -1044,7 +1111,6 @@ td:not(:first-of-type) {
   display: flex;
   flex-direction: column;
   gap: var(--gap-main);
-  inline-size: 31%;
 }
 
 .icons {
@@ -1407,29 +1473,59 @@ td:not(:first-of-type) {
 .income__graphic__columns {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  column-gap: var(--gap-main);
-  margin: 35px auto 0;
-  inline-size: 80%;
+  gap: var(--gap-main);
+  inline-size: 100%;
+  min-inline-size: 34.75rem;
 }
 
 .income__graphic__value {
   display: grid;
-  grid-template-rows: 8rem auto;
+  grid-template-rows: auto 8rem auto;
+  gap: 0.5rem;
   text-align: center;
+}
+
+.income__graphic__value__columns {
+  position: relative;
+}
+
+.income__graphic__value__columns::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.1;
+  background: var(--color-back-main);
+  block-size: 100%;
+  inline-size: 100%;
 }
 
 .income__graphic__value__column {
-  position: relative;
-  align-self: end;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   background: var(--color-back-main);
+  inline-size: 100%;
 }
 
-.income__graphic__value__title {
+.income__graphic__value__subtitle {
   position: absolute;
-  bottom: 100%;
+  top: 0;
   left: 0;
-  text-align: center;
+  z-index: 1;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 0.5rem;
   inline-size: 100%;
+}
+
+.income__graphic__value__subtitle__number {
+  font-weight: normal;
+}
+
+.income__graphic__value:first-child .income__graphic__value__subtitle__number {
+  opacity: 0.2;
+  color: var(--color-text-on-the-dark);
 }
 
 .expenses__header {
@@ -1708,7 +1804,6 @@ td:not(:first-of-type) {
 .municipal__programs__text__link {
   display: inline-flex;
   align-items: center;
-  text-decoration: underline;
   transition: all 0.2s ease-in-out;
 }
 
@@ -1776,6 +1871,7 @@ td:not(:first-of-type) {
   position: relative;
   padding-block: 1rem;
   color: var(--color-text-on-the-dark);
+  min-block-size: 6.75rem;
 }
 
 .municipal__programs__table__subhead::before {
@@ -2251,7 +2347,6 @@ td:not(:first-of-type) {
 
 .formation__urban__link {
   font-weight: bold;
-  text-decoration: underline;
   transition: all 0.2s ease-in-out;
 }
 
@@ -2549,23 +2644,6 @@ td:not(:first-of-type) {
   block-size: 100%;
 }
 
-.footer__background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  inline-size: 100%;
-  block-size: 100%;
-}
-
-.footer__background__video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  inline-size: 100%;
-  block-size: auto;
-}
-
 .footer__main {
   position: relative;
   z-index: 3;
@@ -2629,6 +2707,8 @@ td:not(:first-of-type) {
 
 .footer__link {
   color: var(--color-text-on-the-dark);
+  transition: transform 0.3s ease-in-out;
+  transform-origin: left top;
 }
 
 .footer__main__right__adress {
@@ -2636,7 +2716,7 @@ td:not(:first-of-type) {
 }
 
 .footer__link:hover {
-  text-decoration: underline;
+  transform: scale(1.2);
 }
 
 @media (max-width: 1279px) {
@@ -2644,6 +2724,22 @@ td:not(:first-of-type) {
   .main {
     gap: 1.5rem;
     margin: 3rem 1.5rem;
+  }
+
+  .cover__year__main {
+    font-size: var(--font-size-number-xxl);
+  }
+
+  .cover__year__add {
+    font-size: var(--font-size-subtitle);
+  }
+
+  .block__heading__image {
+    grid-template-columns: 1fr auto 4rem;
+  }
+
+  .block__heading__image::before {
+    min-inline-size: 4rem;
   }
 
   .system__cards {
@@ -2716,23 +2812,23 @@ td:not(:first-of-type) {
   }
 
   .history__map__lazarevka {
-    margin-inline-start: clamp(6.25rem, -5.53rem + 24.5098vw, 14.0625rem);
+    margin-inline-start: clamp(5.9375rem, -3.9577rem + 20.5882vw, 12.5rem);
   }
 
   .history__map__hosta {
-    margin-inline-end: clamp(12.5rem, -11.06rem + 49.0196vw, 28.125rem);
+    margin-inline-start: clamp(12.8125rem, -6.5067rem + 40.1961vw, 25.625rem);
   }
 
   .history__map__centr {
-    margin-inline-start: clamp(5.625rem, -12.2806rem + 37.2549vw, 17.5rem);
+    margin-inline-start: clamp(5.3125rem, -7.8811rem + 27.451vw, 14.0625rem);
   }
 
   .history__map__sirius {
-    margin-inline-end: clamp(9.375rem, -14.185rem + 49.0196vw, 25rem);
+    margin-inline-start: clamp(15.625rem, -6.0502rem + 45.098vw, 30rem);
   }
 
   .history__map__adler {
-    margin-inline-end: clamp(5.625rem, -7.0974rem + 26.4706vw, 14.0625rem);
+    margin-inline-start: clamp(20.3125rem, -5.6036rem + 53.9216vw, 37.5rem);
   }
 
   .history__cards {
@@ -2740,8 +2836,14 @@ td:not(:first-of-type) {
     flex-direction: column;
   }
 
+  .predict__graphics {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .predict__graphic {
-    inline-size: 75%;
+    inline-size: 90%;
   }
 
   .table__block {
@@ -2753,8 +2855,8 @@ td:not(:first-of-type) {
     width: 0;
   }
 
-  .directions__small .directions__item {
-    inline-size: 46.5%;
+  .directions__small {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .income__head {
@@ -2791,6 +2893,10 @@ td:not(:first-of-type) {
   .income__kinds {
     gap: 3%;
     row-gap: var(--gap-main);
+  }
+
+  .income__kind {
+    inline-size: 47%;
   }
 
   .income__deductions {
@@ -2908,6 +3014,10 @@ td:not(:first-of-type) {
 
   .expenses__section__diagrams .diagram__circle {
     inline-size: 100%;
+  }
+
+  .municipal__programs__table__subhead {
+    min-block-size: 13.875rem;
   }
 
   .municipal__programs__heading {
@@ -3299,7 +3409,40 @@ td:not(:first-of-type) {
   .cover__years {
     margin-inline-end: 10%;
     margin-block-start: 5rem;
-    padding: 20px;
+  }
+
+  .cover__year__main {
+    padding: 20px 0 20px 20px;
+    color: var(--color-text-on-the-dark);
+    background: var(--color-back-main);
+    background-image: none;
+  }
+
+  .background__video {
+    inline-size: auto;
+    block-size: 100%;
+  }
+
+  .cover__year__adds {
+    background: var(--color-back-main);
+    background-image: none;
+  }
+
+  .cover__year__add {
+    color: var(--color-text-on-the-dark);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .cover__year__add:first-child {
+    padding: 20px 20px 0 0.3rem;
+  }
+
+  .cover__year__add:last-child {
+    padding: 0 20px 20px 0.3rem;
+  }
+
+  .cover__year__add:not(:first-child):not(:last-child) {
+    padding: 0 20px 0 0.3rem;
   }
 
   .cover__images {
@@ -3324,6 +3467,10 @@ td:not(:first-of-type) {
 
   .block__heading__image {
     grid-template-columns: 1fr auto;
+  }
+
+  .block__heading__image::before {
+    min-inline-size: 3rem;
   }
 
   .block__heading__image::after {
@@ -3378,6 +3525,10 @@ td:not(:first-of-type) {
 
   .glossary__term::before {
     font-size: 89px;
+  }
+
+  .glossary__term__special::before {
+    display: block;
   }
 
   .concept__main {
@@ -3485,40 +3636,45 @@ td:not(:first-of-type) {
 
   .history__map__lazarevka {
     top: 32%;
-    margin-inline-start: clamp(2.625rem, -3.3125rem + 29.6875vw, 10.9375rem);
+    margin-inline-start: clamp(2.9375rem, -2.7768rem + 28.5714vw, 10.9375rem);
   }
 
   .history__map__hosta {
     top: 52%;
-    margin-inline-end: clamp(5.625rem, -3.75rem + 46.875vw, 18.75rem);
+    margin-inline-start: clamp(7.5rem, -2.0982rem + 47.9911vw, 20.9375rem);
   }
 
   .history__map__centr {
-    margin-inline-start: clamp(1.5625rem, -5.8036rem + 36.8304vw, 11.875rem);
+    margin-inline-start: clamp(1.875rem, -5.4911rem + 36.8304vw, 12.1875rem);
   }
 
   .history__map__sirius {
     top: 82%;
-    margin-inline-end: clamp(4.6875rem, -4.0179rem + 43.5268vw, 16.875rem);
+    margin-inline-start: clamp(8.75rem, -2.4107rem + 55.8036vw, 24.375rem);
   }
 
   .history__map__adler {
     top: 60%;
-    margin-inline-end: clamp(1.875rem, -3.4821rem + 26.7857vw, 9.375rem);
-  }
-
-  .predict__graphics {
-    display: flex;
-    flex-direction: column;
-    column-gap: var(--gap-main);
+    margin-inline-start: clamp(11.875rem, -1.5179rem + 66.9643vw, 30.625rem);
   }
 
   .predict__graphic {
     inline-size: 100%;
   }
 
-  .directions__small .directions__item {
-    inline-size: 100%;
+  .table__too__big::before {
+    content: "";
+    display: block;
+    margin: 0 0.6rem 0.6rem auto;
+    background: url(https://img.icons8.com/cotton/100/swipe-right-gesture--v1.png)
+      no-repeat center / cover;
+    inline-size: 2rem;
+    aspect-ratio: 1/1;
+  }
+
+  .directions__small {
+    display: flex;
+    flex-direction: column;
   }
 
   .directions__big {
@@ -3529,6 +3685,7 @@ td:not(:first-of-type) {
   .directions__item__text::after,
   .directions__subbig .directions__item::after {
     top: 0.1rem;
+    left: -0.85rem;
     inline-size: 1.75rem;
   }
 
@@ -3560,7 +3717,7 @@ td:not(:first-of-type) {
   }
 
   .income__graphic__columns {
-    margin: 27px 0 0;
+    min-inline-size: auto;
   }
 
   .deductions__table th:not(:last-child) .table__img:last-child {
@@ -3674,12 +3831,12 @@ td:not(:first-of-type) {
     padding: 0.75rem 0.3rem;
   }
 
-  .municipal__programs__table__stroke:not(:first-child) {
-    align-items: start;
-  }
-
   .municipal__programs__table__stroke p:nth-child(1n + 2) {
     display: none;
+  }
+
+  .municipal__programs__table__subhead {
+    min-block-size: 14.5rem;
   }
 
   .municipal__programs__table__subhead p:first-child {
@@ -3949,11 +4106,6 @@ td:not(:first-of-type) {
     padding: 40px 0 62px;
   }
 
-  .footer__background__video {
-    inline-size: auto;
-    block-size: 100%;
-  }
-
   .footer__main {
     display: flex;
     flex-direction: column;
@@ -3989,7 +4141,7 @@ td:not(:first-of-type) {
   }
 
   .footer__link:hover {
-    text-decoration: none;
+    transform: scale(1);
   }
 }
 
