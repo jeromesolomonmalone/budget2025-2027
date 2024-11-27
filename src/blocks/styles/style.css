@@ -28,7 +28,7 @@
   --color-text-main: #333;
   --color-text-on-the-dark: #fff;
   --color-text-title: #222;
-  --color-text-grey: #0009;
+  --color-text-grey: #999;
   --color-back-main: #2c3878;
   --color-back-opacity: #d5d7e4;
   --color-background: #f2f2f2;
@@ -167,10 +167,10 @@ body {
   top: 3rem;
   left: 0;
   z-index: 1000;
-  block-size: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  block-size: 80vh;
 }
 
 .header__text {
@@ -347,7 +347,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--gap-main);
-  padding-block-start: 48px;
+  padding-block: 48px;
 }
 
 .block__heading {
@@ -786,7 +786,6 @@ body {
   margin: 14px;
   padding: 14px;
   box-shadow: 10px 10px 40px 0 #0000000d;
-  text-align: start;
   background: white;
 }
 
@@ -878,9 +877,9 @@ body {
 .history__hidden__fact__values {
   display: flex;
   flex-wrap: wrap;
-  column-gap: var(--gap-main);
-  row-gap: 0.5rem;
   justify-content: space-between;
+  row-gap: 0.5rem;
+  column-gap: var(--gap-main);
   block-size: min-content;
 }
 
@@ -892,14 +891,14 @@ body {
 .history__hidden__fact__postscript {
   display: grid;
   grid-template-columns: repeat(2, min-content);
-  column-gap: 0.75rem;
   align-items: center;
+  column-gap: 0.75rem;
   align-self: end;
 }
 
 .history__hidden__fact__postscript__value {
-  font-weight: normal;
   color: var(--color-text-on-the-dark);
+  font-weight: normal;
 }
 
 .history__map__fact {
@@ -1157,16 +1156,16 @@ td:not(:first-of-type) {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  column-gap: 3.5%;
   row-gap: var(--gap-main);
+  column-gap: 3.5%;
 }
 
 .directions__item {
   position: relative;
-  counter-increment: directions__item;
   display: flex;
   flex-direction: column;
   gap: var(--gap-main);
+  counter-increment: directions__item;
 }
 
 .directions__list:first-of-type .directions__item {
@@ -2072,7 +2071,7 @@ td:not(:first-of-type) {
 }
 
 .municipal__program__proportions__title {
-  border-inline-end: 2px solid var(--column-5);
+  border-inline-end: 2px solid var(--column-7);
   padding-inline-end: 0.75rem;
   text-align: end;
 }
@@ -2205,8 +2204,8 @@ td:not(:first-of-type) {
 
 .municipal__program__points__block__of__three .points:last-of-type {
   grid-column: span 2;
-  inline-size: 50%;
   justify-self: center;
+  inline-size: 50%;
 }
 
 .municipal__program__points {
@@ -2278,9 +2277,9 @@ td:not(:first-of-type) {
 
 .municipal__program__footnote__card {
   align-items: start;
-  text-align: start;
-  padding: 20px;
   gap: 1rem;
+  padding: 20px;
+  text-align: start;
 }
 
 .municipal__program__footnote__card:nth-child(even) {
@@ -2295,12 +2294,12 @@ td:not(:first-of-type) {
 
 .municipal__program__footnote__card__golden::before {
   content: "";
-  inline-size: 40px;
   position: absolute;
   bottom: 100%;
   left: 0;
-  border-block-start: 2px solid gold;
   margin-block-end: 0.4rem;
+  border-block-start: 2px solid gold;
+  inline-size: 40px;
 }
 
 .municipal__program__heading__block__subtitle {
@@ -2322,7 +2321,13 @@ td:not(:first-of-type) {
 .program__sanatorium_resort
   .predict__graphic:first-of-type
   .predict__graphic__value__column {
-  background: var(--column-5);
+  background: var(--column-1);
+}
+
+.program__sanatorium_resort
+  .predict__graphic:last-of-type
+  .predict__graphic__value__column {
+  background: var(--column-7);
 }
 
 .predict__graphic__postscript {
@@ -2392,15 +2397,6 @@ td:not(:first-of-type) {
   min-inline-size: 20%;
 }
 
-.formation__urban__link {
-  font-weight: bold;
-  transition: all 0.2s ease-in-out;
-}
-
-.formation__urban__link:hover {
-  font-weight: var(--font-weight-bolder);
-}
-
 .coordinators__table {
   display: flex;
   flex-wrap: wrap;
@@ -2415,6 +2411,20 @@ td:not(:first-of-type) {
 
 .coordinators__article:nth-child(-1n + 9) {
   border-block-end: 1px solid #0000001a;
+}
+
+.coordinators__article:last-child {
+  position: relative;
+}
+
+.coordinators__article:last-child::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  display: block;
+  border-block-end: 1px solid #0000001a;
+  inline-size: 300%;
 }
 
 .coordinators__article__name {
@@ -2455,68 +2465,127 @@ td:not(:first-of-type) {
   text-decoration-color: var(--color-text-title);
 }
 
-.debt__load__main {
-  display: grid;
-  grid-template-columns: 300px auto;
-  align-items: center;
-  column-gap: var(--gap-main);
-}
-
-.debt__load__main__value {
-  padding: 14px;
-  box-shadow: 0 0 60px rgb(0 0 0 / 0.1);
-  text-align: center;
-  background: var(--color-back-opacity);
-}
-
-.debt__load__main__nominal {
-  text-align: center;
-}
-
-.debt__load__main__text {
-  grid-column-start: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
-}
-
-.debt__load__main__second {
-  grid-template-columns: auto 300px;
-}
-
-.debt__load__main__second .debt__load__main__text {
-  grid-column-start: 1;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  text-align: end;
-}
-
-.debt__load__main__second .debt__load__main__value {
-  grid-column-start: 2;
-}
-
-.debt__load__main__second .debt__load__main__nominal {
-  grid-column-start: 2;
-}
-
 .debt__load__block {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: var(--gap-main);
+}
+
+.debt__load__block__text {
+  inline-size: 100%;
+}
+
+.debt__load__predict__graphic__columns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-block-start: var(--gap-main);
+}
+
+.debt__load__predict__graphic__column {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+}
+
+.debt__load__predict__graphic__column__year {
+  text-align: end;
+  inline-size: 54px;
+}
+
+.debt__load__predict__graphic__column__main {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--color-background);
+}
+
+.debt__load__predict__graphic__column__main__back {
+  writing-mode: vertical-rl;
+  background: var(--column-1);
+}
+
+.debt__load__predict__graphic__column__value {
+  align-self: center;
+  padding-inline-end: 0.5rem;
+}
+
+.debt__load__rating {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-main);
+}
+
+.debt__load__rating__img {
+  inline-size: 160px;
+}
+
+.initiative__budgeting__heading {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 0 auto;
+}
+
+.initiative__budgeting__heading__img {
+  inline-size: 160px;
+}
+
+.initiative__budgeting__heading__title {
+  color: var(--color-back-main);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+
+.initiative__budgeting__block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-main);
+  margin-block-end: calc(var(--gap-main) * 2);
+  padding-inline: 90px;
+}
+
+.initiative__budgeting__block__image {
+  margin-inline-start: -90px;
+  object-fit: cover;
+  inline-size: calc(100% + 180px);
+  aspect-ratio: 1.7777/1;
+}
+
+.initiative__budgeting__block__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: var(--gap-main);
+  margin-inline-start: -90px;
+  border-block-end: 1px solid #0000001a;
+  padding-block-end: var(--gap-main);
+  inline-size: calc(100% + 180px);
+}
+
+.initiative__budgeting__financing {
+  padding: 20px;
+  box-shadow: 10px 10px 40px 0 #0000000d;
+  text-align: end;
+  background: var(--color-text-on-the-dark);
+  min-inline-size: max-content;
+}
+
+.initiative__budgeting__financing__circles__two {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--gap-main);
 }
 
-.debt__load__block__text {
-  color: var(--color-text-title);
-  background: none;
+.initiative__budgeting__financing__circles__two .diagram__circle {
+  justify-self: center;
+  inline-size: 66.666%;
 }
 
-.debt__load__block__text::before {
-  background: var(--color-text-title);
-}
-
-.debt__load__block__img {
-  object-fit: cover;
-  inline-size: 100%;
-  block-size: 100%;
+.initiative__budgeting__financing__circles__three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-main);
 }
 
 .national__projects__articles {
@@ -2647,12 +2716,12 @@ td:not(:first-of-type) {
   position: sticky;
   top: 3rem;
   right: 0;
-  block-size: 80vh;
   z-index: 1000;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  block-size: 80vh;
 }
 
 .right__header__logo {
@@ -2772,6 +2841,19 @@ td:not(:first-of-type) {
   transform: scale(1.2);
 }
 
+.footer__postcriptum {
+  position: relative;
+  z-index: 1;
+  margin: 4rem auto 0;
+  color: var(--color-text-on-the-dark);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-xxs);
+  line-height: var(--line-height-xxs);
+  text-align: center;
+  text-transform: uppercase;
+  inline-size: clamp(30.625rem, -6.2027rem + 76.6246vw, 80rem);
+}
+
 @media (max-width: 1279px) {
 
   .main {
@@ -2824,6 +2906,7 @@ td:not(:first-of-type) {
 
   .text__on__picture {
     margin-block-start: -3rem;
+    text-align: center;
   }
 
   .history__old__special__right {
@@ -2856,9 +2939,9 @@ td:not(:first-of-type) {
 
   .history__hidden__fact {
     display: grid;
+    grid-template-columns: 0.5fr 1fr;
     padding: 20px 20px 0;
     color: var(--color-text-on-the-dark);
-    grid-template-columns: 0.5fr 1fr;
   }
 
   .history__map__fact {
@@ -2921,6 +3004,17 @@ td:not(:first-of-type) {
 
   .directions__list:first-of-type .directions__item {
     inline-size: 100%;
+  }
+
+  .image__head {
+    inline-size: 100%;
+  }
+
+  .basic__data__title {
+    margin: 14px auto;
+    font-size: var(--font-size-main);
+    line-height: var(--line-height-main);
+    inline-size: 90%;
   }
 
   .income__head {
@@ -3026,13 +3120,20 @@ td:not(:first-of-type) {
   }
 
   .expenses__header__title {
-    margin: 0 0 -2rem;
+    margin: 0 auto -2rem;
+    inline-size: 90%;
+  }
+
+  .expenses__header .image__head {
+    margin: 0;
+    inline-size: 100%;
   }
 
   .expenses__header__table {
     margin-inline-start: 0;
     padding: 14px;
-    inline-size: clamp(34.375rem, 20.2112rem + 29.4695vw, 43.75rem);
+    inline-size: 100%;
+    min-inline-size: 34.5rem;
   }
 
   .expenses__header__table__submain {
@@ -3062,9 +3163,29 @@ td:not(:first-of-type) {
     align-self: start;
   }
 
+  .expenses__principles__block {
+    display: grid;
+    gap: 0;
+    grid-template: repeat(3, auto) / 100%;
+  }
+
   .expenses__principles__title {
-    margin: 1rem 0 0 -60%;
-    inline-size: 150%;
+    grid-column-start: 1;
+    margin: -2rem auto 0;
+    inline-size: 90%;
+  }
+
+  .expenses__principles {
+    grid-column-start: 1;
+    grid-row-start: 3;
+    margin-block-start: var(--gap-main);
+  }
+
+  .expenses__principles__image {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    object-position: bottom;
+    aspect-ratio: 1.7778/1;
   }
 
   .expenses__structure {
@@ -3198,7 +3319,7 @@ td:not(:first-of-type) {
   .municipal__program__proportions__title::after {
     content: "";
     display: block;
-    border-block-end: 1px solid var(--column-5);
+    border-block-end: 1px solid var(--column-7);
     padding-block-end: 0.75rem;
     inline-size: 71.5%;
   }
@@ -3315,6 +3436,11 @@ td:not(:first-of-type) {
     inline-size: 50%;
   }
 
+  .coordinators__article:last-child::before {
+    left: -50%;
+    inline-size: 200%;
+  }
+
   .coordinators__article:nth-child(-1n + 10) {
     border-block-end: 1px solid #0000001a;
   }
@@ -3325,11 +3451,64 @@ td:not(:first-of-type) {
   }
 
   .debt__load__block__text {
-    margin-left: 0;
+    padding: 20px 0 0;
+    inline-size: 100%;
   }
 
-  .debt__load__block__img {
-    aspect-ratio: 1.7778/1;
+  .debt__load__predict__graphic {
+    text-align: center;
+    inline-size: 100%;
+  }
+
+  .debt__load__predict__graphic__columns {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .debt__load__predict__graphic__column {
+    grid-template-columns: auto;
+    grid-template-rows: auto 11rem;
+  }
+
+  .debt__load__predict__graphic__column__year {
+    text-align: center;
+    inline-size: 100%;
+  }
+
+  .debt__load__predict__graphic__column__main {
+    flex-direction: column;
+  }
+
+  .debt__load__predict__graphic__column__main__back {
+    writing-mode: horizontal-tb;
+  }
+
+  .debt__load__predict__graphic__column__value {
+    align-self: center;
+    padding-inline-end: 0;
+    padding-block-end: 0.5rem;
+  }
+
+  .initiative__budgeting__block {
+    padding-inline: 0;
+  }
+
+  .initiative__budgeting__block__image {
+    margin-inline-start: 0;
+    inline-size: 100%;
+  }
+
+  .initiative__budgeting__block__heading {
+    flex-direction: column;
+    align-items: start;
+    margin-inline-start: 0;
+    inline-size: 100%;
+  }
+
+  .initiative__budgeting__financing {
+    padding: 20px;
+    text-align: center;
+    inline-size: 100%;
   }
 
   .national__projects__articles {
@@ -3688,6 +3867,10 @@ td:not(:first-of-type) {
     inline-size: 100%;
   }
 
+  .footnote__transparent {
+    padding: 20px 0 0;
+  }
+
   .process__cards {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -3784,17 +3967,6 @@ td:not(:first-of-type) {
     inline-size: 1.75rem;
   }
 
-  .image__head {
-    inline-size: 100%;
-  }
-
-  .basic__data__title {
-    margin: 14px auto;
-    font-size: var(--font-size-main);
-    line-height: var(--line-height-main);
-    inline-size: 90%;
-  }
-
   .main__numbers__block {
     text-align: center;
   }
@@ -3819,45 +3991,10 @@ td:not(:first-of-type) {
     left: 60%;
   }
 
-  .expenses__header__title {
-    margin: 0 auto -2rem;
-    inline-size: 90%;
-  }
-
-  .expenses__header .image__head {
-    margin: 0;
-    inline-size: 100%;
-  }
-
   .expenses__header__table {
     margin-block-start: var(--gap-main);
     padding: 0.5rem;
-    inline-size: 100%;
-  }
-
-  .expenses__principles__block {
-    display: grid;
-    gap: 0;
-    grid-template: repeat(3, auto) / 100%;
-  }
-
-  .expenses__principles__title {
-    grid-column-start: 1;
-    margin: -2rem auto 0;
-    inline-size: 90%;
-  }
-
-  .expenses__principles {
-    grid-column-start: 1;
-    grid-row-start: 3;
-    margin-block-start: var(--gap-main);
-  }
-
-  .expenses__principles__image {
-    grid-row-start: 1;
-    grid-row-end: 2;
-    object-position: bottom;
-    aspect-ratio: 1.7778/1;
+    min-inline-size: auto;
   }
 
   .expenses__structure {
@@ -3931,8 +4068,8 @@ td:not(:first-of-type) {
   }
 
   .municipal__programs__table__subhead {
-    min-block-size: 11.25rem;
     padding: 14px;
+    min-block-size: 11.25rem;
   }
 
   .municipal__programs__table__subhead p:first-child {
@@ -3980,6 +4117,14 @@ td:not(:first-of-type) {
     grid-template-columns: 1fr auto;
     gap: var(--gap-main);
     margin: 0;
+  }
+
+  .municipal__program__image__block__img__left {
+    object-position: left;
+  }
+
+  .municipal__program__image__block__img__right {
+    object-position: right;
   }
 
   .municipal__program__image__block__values {
@@ -4062,8 +4207,8 @@ td:not(:first-of-type) {
 
   .municipal__programs__text__numbered::after {
     top: 0.1rem;
-    inline-size: 1.75rem;
     left: -0.8rem;
+    inline-size: 1.75rem;
   }
 
   .municipal__program__heading__block__subtitle {
@@ -4130,6 +4275,14 @@ td:not(:first-of-type) {
     background: var(--color-background);
   }
 
+  .social__support__table__article:last-child,
+  .social__support__table:not(:last-of-type)
+    .social__support__table__article:nth-child(8) {
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
+  }
+
   .social__support__subtitle {
     grid-template-columns: 1fr;
     gap: 0.5rem;
@@ -4146,54 +4299,69 @@ td:not(:first-of-type) {
     grid-row-start: 3;
   }
 
-  .formation__urban__link:hover {
-    font-weight: bold;
-  }
-
   .coordinators__article {
     inline-size: 100%;
-  }
-
-  .debt__load__main {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-    text-align: center;
-  }
-
-  .debt__load__main__value {
-    grid-row-start: 2;
-    grid-row-end: 3;
-  }
-
-  .debt__load__main__nominal {
-    grid-row-start: 3;
-    grid-row-end: 4;
-  }
-
-  .debt__load__main__text {
-    grid-column-start: 1;
-  }
-
-  .debt__load__main__second {
-    grid-template-columns: 1fr;
-  }
-
-  .debt__load__main__second .debt__load__main__text {
-    text-align: center;
-  }
-
-  .debt__load__main__second .debt__load__main__value {
-    grid-column-start: 1;
-  }
-
-  .debt__load__main__second .debt__load__main__nominal {
-    grid-column-start: 1;
   }
 
   .coordinators__article__link:hover {
     font-weight: normal;
     text-decoration-color: var(--color-text-grey);
+  }
+
+  .coordinators__article:last-child::before {
+    display: none;
+  }
+
+  .coordinators__article:nth-child(-1n + 12) {
+    border-block-end: 1px solid #0000001a;
+  }
+
+  .debt__load__rating {
+    position: relative;
+    padding: 20px;
+  }
+
+  .debt__load__rating__text {
+    text-align: center;
+  }
+
+  .debt__load__rating__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    object-fit: cover;
+    opacity: 0.1;
+    inline-size: 100%;
+    block-size: 100%;
+  }
+
+  .initiative__budgeting__heading {
+    flex-direction: column;
+  }
+
+  .initiative__budgeting__heading__img {
+    inline-size: 300px;
+  }
+
+  .initiative__budgeting__financing {
+    box-shadow: none;
+    background: var(--color-background);
+  }
+
+  .initiative__budgeting__financing__circles__two .diagram__circle {
+    inline-size: 100%;
+  }
+
+  .initiative__budgeting__financing__circles__three {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--gap-main);
+  }
+
+  .initiative__budgeting__financing__circles__three .diagram__circle {
+    inline-size: calc(50% - var(--gap-main));
   }
 
   .national__projects__articles {
@@ -4262,6 +4430,11 @@ td:not(:first-of-type) {
 
   .footer__link:hover {
     transform: scale(1);
+  }
+
+  .footer__postcriptum {
+    padding: 0 1.125rem;
+    inline-size: 100%;
   }
 }
 
