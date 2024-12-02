@@ -189,7 +189,7 @@ body {
 
 .header__title {
   color: var(--color-text-title);
-  font-weight: 900;
+  font-weight: var(--font-weight-bolder);
   font-size: 48px;
   line-height: 0.75;
   writing-mode: vertical-rl;
@@ -501,16 +501,25 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--gap-main);
+  border-block-start: 1px solid #0000001a;
+  padding: 20px 0;
+}
+
+.concept__subblock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .concept__subblock__title {
-  margin-block-end: 0.5rem;
+  margin-block-end: 0.3rem;
 }
 
 .concept__subblock__title::after {
   content: "";
   display: block;
-  margin-block-start: 0.5rem;
+  margin: 0.3rem auto 0;
   background: var(--color-text-main);
   block-size: 2px;
   inline-size: 40px;
@@ -560,10 +569,6 @@ body {
   overflow: hidden;
   background: var(--color-text-on-the-dark);
   counter-reset: history__district__item;
-}
-
-.history__cards .bold__text {
-  color: var(--color-text-on-the-dark);
 }
 
 .system__card__cover {
@@ -735,9 +740,8 @@ body {
 }
 
 .process__laws {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--gap-main);
 }
 
@@ -747,28 +751,52 @@ body {
   align-items: center;
   gap: 0.75rem;
   text-align: center;
-  inline-size: 30%;
 }
 
 .process__stages {
   display: flex;
   flex-direction: column;
-  gap: var(--gap-main);
+  gap: 0.5rem;
 }
 
 .process__stage {
   display: grid;
-  grid-template-columns: 1fr 1.7fr;
-  align-items: center;
-  column-gap: var(--gap-main);
+  grid-template-columns: repeat(2, auto);
 }
 
 .process__stage__year {
-  color: var(--color-back-main);
+  display: flex;
+  align-items: center;
+  padding: var(--gap-main);
+  color: var(--color-text-on-the-dark);
+  background: var(--color-back-main);
 }
 
 .process__stage__month {
-  color: var(--color-back-main);
+  grid-column-start: 1;
+  font-weight: var(--font-weight-medium);
+}
+
+.process__stage__title {
+  position: relative;
+  display: flex;
+  grid-column-start: 2;
+  grid-row-start: 1;
+  justify-content: end;
+  align-items: center;
+  padding: 0.5rem var(--gap-main);
+  text-align: end;
+}
+
+.process__stage__title::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.07;
+  background: var(--color-back-main);
+  inline-size: 100%;
+  block-size: 100%;
 }
 
 .history__old {
@@ -1184,14 +1212,16 @@ td:not(:first-of-type) {
 .directions__item__text::before {
   content: counter(directions__item);
   margin-inline-end: 0.75rem;
+  vertical-align: bottom;
   font-weight: var(--font-weight-bolder);
   font-size: var(--font-size-xl);
+  line-height: 1;
 }
 
 .directions__item__text::after {
   content: "";
   position: absolute;
-  top: 0.3rem;
+  top: -0.1rem;
   left: -1rem;
   z-index: -1;
   display: block;
@@ -1468,8 +1498,12 @@ td:not(:first-of-type) {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  inline-size: 75%;
+  inline-size: 80%;
   aspect-ratio: 1/1;
+}
+
+.income .diagram__circle__value {
+  inline-size: 62.5%;
 }
 
 .diagram__circle__value__big {
@@ -2020,6 +2054,13 @@ td:not(:first-of-type) {
   inline-size: 100%;
 }
 
+.municipal__program__image__middle {
+  margin: 0 auto;
+  object-fit: cover;
+  inline-size: 75%;
+  aspect-ratio: 1.777/1;
+}
+
 .municipal__program__image__block__values {
   position: absolute;
   top: -3rem;
@@ -2197,6 +2238,7 @@ td:not(:first-of-type) {
 }
 
 .municipal__program__points__block__of__three {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--gap-main);
@@ -2206,6 +2248,17 @@ td:not(:first-of-type) {
   grid-column: span 2;
   justify-self: center;
   inline-size: 50%;
+}
+
+.municipal__program__points__title {
+  border-block-end: 1px solid #0000001a;
+  padding-block-end: var(--gap-main);
+}
+
+.municipal__programs__main__text .municipal__program__points__title,
+.directions .municipal__program__points__title {
+  margin-block-end: calc(var(--gap-main) / -2);
+  padding-block-end: calc(var(--gap-main) / 2);
 }
 
 .municipal__program__points {
@@ -2226,14 +2279,16 @@ td:not(:first-of-type) {
 .municipal__programs__text__numbered::before {
   content: counter(municipal__programs__text__numbered);
   margin-inline-end: 0.75rem;
+  vertical-align: bottom;
   font-weight: var(--font-weight-bolder);
   font-size: var(--font-size-xl);
+  line-height: 1;
 }
 
 .municipal__programs__text__numbered::after {
   content: "";
   position: absolute;
-  top: 0.3rem;
+  top: -0.1rem;
   left: -1rem;
   z-index: -1;
   display: block;
@@ -2372,7 +2427,7 @@ td:not(:first-of-type) {
   text-align: center;
 }
 
-.social__support__table__article__img .icon {
+.social__support__table__article .icon {
   z-index: 1;
   margin: 0 auto;
 }
@@ -2395,6 +2450,22 @@ td:not(:first-of-type) {
   box-shadow: 0 0 60px rgb(0 0 0 / 0.1);
   background: var(--color-back-opacity);
   min-inline-size: 20%;
+}
+
+.program__social__support__middle {
+  border-block-start: 1px solid #0000001a;
+  padding-block-start: 20px;
+  text-align: center;
+}
+
+.program__security__points {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap-main) / 2);
+}
+
+.program__transportation__services__title {
+  text-align: center;
 }
 
 .coordinators__table {
@@ -2520,6 +2591,23 @@ td:not(:first-of-type) {
   inline-size: 160px;
 }
 
+.accounting__block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--gap-main);
+}
+
+.accounting__block__img {
+  object-fit: cover;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.accounting__block__title {
+  inline-size: 100%;
+}
+
 .initiative__budgeting__heading {
   display: flex;
   align-items: center;
@@ -2555,7 +2643,7 @@ td:not(:first-of-type) {
 .initiative__budgeting__block__heading {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: center;
   gap: var(--gap-main);
   margin-inline-start: -90px;
   border-block-end: 1px solid #0000001a;
@@ -2877,6 +2965,33 @@ td:not(:first-of-type) {
     min-inline-size: 4rem;
   }
 
+  .intro__text:first-of-type {
+    inline-size: 100%;
+  }
+
+  .intro__mayor__photo {
+    inline-size: 42%;
+  }
+
+  .concept__main {
+    inline-size: 100%;
+  }
+
+  .concept__block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .concept__subblock {
+    border: none;
+    inline-size: calc(50% - var(--gap-main));
+  }
+
+  .concept__budget__policy {
+    inline-size: 100%;
+  }
+
   .system__cards {
     display: flex;
     flex-wrap: wrap;
@@ -2890,6 +3005,19 @@ td:not(:first-of-type) {
 
   .system__card:last-of-type {
     inline-size: 60%;
+  }
+
+  .footnote {
+    padding: 20px;
+    inline-size: 100%;
+  }
+
+  .process__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .process__laws {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .history__cards .system__card {
@@ -3072,7 +3200,21 @@ td:not(:first-of-type) {
   }
 
   .diagram__circles {
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 2%;
+  }
+
+  .diagram__circle {
+    inline-size: 32%;
+  }
+
+  .diagram__circle__value {
+    inline-size: 90%;
+  }
+
+  .income .diagram__circle__value {
+    inline-size: 90%;
   }
 
   .income .image__head {
@@ -3111,10 +3253,6 @@ td:not(:first-of-type) {
     display: none;
   }
 
-  .diagram__circle__value {
-    inline-size: 90%;
-  }
-
   .income__graphic__columns {
     inline-size: 100%;
   }
@@ -3148,15 +3286,16 @@ td:not(:first-of-type) {
   .expenses__fraction .diagram__circle {
     display: flex;
     flex-direction: column;
+    inline-size: 100%;
   }
 
   .expenses__fraction .diagram__circle__value {
     align-self: end;
-    inline-size: 75%;
+    inline-size: 60%;
   }
 
   .expenses__section__diagrams .diagram__circle .diagram__circle__value {
-    inline-size: 75%;
+    inline-size: 70%;
   }
 
   .expenses__fraction .diagram__circle:last-of-type .diagram__circle__value {
@@ -3277,7 +3416,7 @@ td:not(:first-of-type) {
   }
 
   .municipal__program__image__block__values {
-    right: 16%;
+    right: clamp(0rem, -13.2195rem + 27.5049vw, 8.75rem);
     padding: 14px;
   }
 
@@ -3382,7 +3521,7 @@ td:not(:first-of-type) {
   }
 
   .social__support__title__name {
-    inline-size: 150%;
+    inline-size: 100%;
   }
 
   .social__support__table {
@@ -3430,6 +3569,12 @@ td:not(:first-of-type) {
     text-align: center;
     min-inline-size: 160px;
     inline-size: 190px;
+  }
+
+  .program__security__points {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-main);
   }
 
   .coordinators__article {
@@ -3489,6 +3634,16 @@ td:not(:first-of-type) {
     padding-block-end: 0.5rem;
   }
 
+  .accounting__block {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .accounting__block__img {
+    object-position: top;
+    aspect-ratio: 1.7777 / 1;
+  }
+
   .initiative__budgeting__block {
     padding-inline: 0;
   }
@@ -3508,6 +3663,10 @@ td:not(:first-of-type) {
   .initiative__budgeting__financing {
     padding: 20px;
     text-align: center;
+    inline-size: 100%;
+  }
+
+  .initiative__budgeting__financing__circles__three .diagram__circle {
     inline-size: 100%;
   }
 
@@ -3773,6 +3932,7 @@ td:not(:first-of-type) {
 
   .intro__mayor__photo {
     position: relative;
+    inline-size: 45%;
   }
 
   .navigation__checklist {
@@ -3811,8 +3971,17 @@ td:not(:first-of-type) {
   }
 
   .concept__block {
-    display: flex;
     flex-direction: column;
+  }
+
+  .concept__subblock {
+    padding: 20px;
+    inline-size: 100%;
+  }
+
+  .concept__subblock:nth-child(even) {
+    border-radius: 6px;
+    background: var(--color-background);
   }
 
   .concept__budget__policy {
@@ -3862,26 +4031,18 @@ td:not(:first-of-type) {
     block-size: 7px;
   }
 
-  .footnote {
-    padding: 20px;
-    inline-size: 100%;
-  }
-
   .footnote__transparent {
     padding: 20px 0 0;
   }
 
-  .process__cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .process__laws {
-    flex-direction: coluumn;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
   }
 
-  .process__law {
-    inline-size: 100%;
+  .process__stages {
+    gap: var(--gap-main);
   }
 
   .process__stage {
@@ -3890,18 +4051,30 @@ td:not(:first-of-type) {
     text-align: center;
   }
 
-  .process__stage__main {
-    padding: 14px;
+  .process__stage__year {
+    justify-content: center;
+    padding: 14px 0 0;
+    color: var(--color-text-title);
     background: var(--color-background);
-    inline-size: 100%;
   }
 
-  .process__stage__year {
-    color: var(--color-text-title);
+  .process__stage__year__special {
+    padding-block: 14px;
   }
 
   .process__stage__month {
-    color: var(--color-text-title);
+    padding: 0 0 14px;
+    background: var(--color-background);
+  }
+
+  .process__stage__title {
+    justify-content: center;
+    padding: 0;
+    text-align: center;
+  }
+
+  .process__stage__title::before {
+    display: none;
   }
 
   .history__map__signatures {
@@ -3944,11 +4117,12 @@ td:not(:first-of-type) {
   .table__too__big::before {
     content: "";
     display: block;
-    margin: 0 0.6rem 0.6rem auto;
-    background: url(https://img.icons8.com/cotton/100/swipe-right-gesture--v1.png)
-      no-repeat center / cover;
-    inline-size: 2rem;
-    aspect-ratio: 1/1;
+    margin-left: auto;
+    margin-block-end: 0.5rem;
+    background: url(https://i.postimg.cc/hGTsb7Qq/3-1.png) no-repeat center /
+      cover;
+    block-size: 30px;
+    inline-size: 60px;
   }
 
   .directions__list {
@@ -3961,10 +4135,23 @@ td:not(:first-of-type) {
     flex-direction: column;
   }
 
+  .directions__item__text::before {
+    vertical-align: baseline;
+  }
+
   .directions__item__text::after {
-    top: 0.1rem;
+    top: -0.2rem;
     left: -0.85rem;
     inline-size: 1.75rem;
+  }
+
+  .diagram__circles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .diagram__circle {
+    inline-size: 100%;
   }
 
   .main__numbers__block {
@@ -3995,6 +4182,10 @@ td:not(:first-of-type) {
     margin-block-start: var(--gap-main);
     padding: 0.5rem;
     min-inline-size: auto;
+  }
+
+  .expenses__fraction .diagram__circle__value {
+    inline-size: 90%;
   }
 
   .expenses__structure {
@@ -4036,7 +4227,6 @@ td:not(:first-of-type) {
   }
 
   .municipal__programs__heading__block .big__numbers::before {
-    right: 25%;
     left: auto;
   }
 
@@ -4127,6 +4317,10 @@ td:not(:first-of-type) {
     object-position: right;
   }
 
+  .municipal__program__image__middle {
+    inline-size: 100%;
+  }
+
   .municipal__program__image__block__values {
     position: relative;
     top: 0;
@@ -4205,8 +4399,12 @@ td:not(:first-of-type) {
     text-transform: none;
   }
 
+  .municipal__programs__text__numbered::before {
+    vertical-align: baseline;
+  }
+
   .municipal__programs__text__numbered::after {
-    top: 0.1rem;
+    top: -0.2rem;
     left: -0.8rem;
     inline-size: 1.75rem;
   }
@@ -4241,15 +4439,12 @@ td:not(:first-of-type) {
   }
 
   .social__support__title {
-    gap: 0.5rem;
+    gap: 0.3rem;
+    padding-inline-start: 20px;
   }
 
   .social__support__title .big__numbers {
     margin-left: 0;
-  }
-
-  .social__support__title__name {
-    inline-size: 100%;
   }
 
   .social__support__table {
@@ -4283,6 +4478,11 @@ td:not(:first-of-type) {
     background: none;
   }
 
+  .social__support__table:not(:last-of-type)
+    .social__support__table__article__img:last-child {
+    display: block;
+  }
+
   .social__support__subtitle {
     grid-template-columns: 1fr;
     gap: 0.5rem;
@@ -4297,6 +4497,11 @@ td:not(:first-of-type) {
 
   .social__support__subtitle__nominal {
     grid-row-start: 3;
+  }
+
+  .program__security__points {
+    display: flex;
+    flex-direction: column;
   }
 
   .coordinators__article {
@@ -4338,6 +4543,7 @@ td:not(:first-of-type) {
 
   .initiative__budgeting__heading {
     flex-direction: column;
+    text-align: center;
   }
 
   .initiative__budgeting__heading__img {
