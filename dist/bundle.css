@@ -447,6 +447,7 @@ body {
   display: inline-block;
   margin-inline-end: 0.5rem;
   font-weight: normal;
+  inline-size: 18px;
 }
 
 .navigation__link:hover {
@@ -588,6 +589,7 @@ body {
   z-index: 2;
   vertical-align: middle;
   transform: rotate(-25deg);
+  animation: scale 2s infinite linear;
   inline-size: 30px;
   block-size: 30px;
 }
@@ -937,9 +939,9 @@ body {
 }
 
 .history__map__fact:last-of-type {
-  position: absolute;
-  bottom: 40px;
-  left: 40px;
+  grid-column-start: 1;
+  grid-row-start: 2;
+  align-self: end;
 }
 
 .history__map__fact__detail::before {
@@ -967,7 +969,8 @@ body {
 
 .history__map__image {
   position: relative;
-  grid-column: span 2;
+  grid-column-start: 1;
+  grid-column-end: 3;
   grid-row-start: 2;
 }
 
@@ -1019,6 +1022,10 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--gap-main);
+}
+
+.history__cards .bold__text {
+  color: var(--color-text-on-the-dark);
 }
 
 .history__district__item {
@@ -1646,6 +1653,7 @@ td:not(:first-of-type) {
 .expenses__main__table__type {
   display: grid;
   grid-template-columns: 5fr 1fr;
+  align-items: center;
   gap: var(--gap-main);
 }
 
@@ -1876,22 +1884,15 @@ td:not(:first-of-type) {
 .municipal__programs__text__link {
   display: inline-flex;
   align-items: center;
+  text-decoration: underline;
+  text-decoration-color: var(--color-text-grey);
+  text-underline-offset: 0.2rem;
   transition: all 0.2s ease-in-out;
 }
 
 .municipal__programs__text__link:hover {
   font-weight: var(--font-weight-bolder);
-}
-
-.municipal__programs__text__link::after {
-  content: "";
-  display: block;
-  vertical-align: middle;
-  background: url("https://img.icons8.com/ios/100/finger-and-thumb.png") center /
-    contain;
-  transform: rotate(-25deg);
-  inline-size: 30px;
-  block-size: 30px;
+  text-decoration-color: var(--color-text-title);
 }
 
 .municipal__programs__main__table__navigation {
@@ -2256,7 +2257,8 @@ td:not(:first-of-type) {
 }
 
 .municipal__programs__main__text .municipal__program__points__title,
-.directions .municipal__program__points__title {
+.directions .municipal__program__points__title,
+.openness__link__block .municipal__program__points__title {
   margin-block-end: calc(var(--gap-main) / -2);
   padding-block-end: calc(var(--gap-main) / 2);
 }
@@ -2480,22 +2482,8 @@ td:not(:first-of-type) {
   inline-size: 33.33333%;
 }
 
-.coordinators__article:nth-child(-1n + 9) {
+.coordinators__article:nth-child(-1n + 12) {
   border-block-end: 1px solid #0000001a;
-}
-
-.coordinators__article:last-child {
-  position: relative;
-}
-
-.coordinators__article:last-child::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  display: block;
-  border-block-end: 1px solid #0000001a;
-  inline-size: 300%;
 }
 
 .coordinators__article__name {
@@ -2598,6 +2586,10 @@ td:not(:first-of-type) {
   gap: var(--gap-main);
 }
 
+.accounting__block .bolder__text {
+  color: var(--color-text-on-the-dark);
+}
+
 .accounting__block__img {
   object-fit: cover;
   inline-size: 100%;
@@ -2606,6 +2598,47 @@ td:not(:first-of-type) {
 
 .accounting__block__title {
   inline-size: 100%;
+}
+
+.openness__link__block {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  align-items: center;
+  gap: var(--gap-main);
+}
+
+.openness__link__img {
+  grid-column: span 2;
+  padding: 14px;
+  background: var(--color-background);
+}
+
+.openness__link___text {
+  grid-column: span 8;
+}
+
+.openness__link {
+  text-decoration: underline;
+  text-decoration-color: var(--color-text-grey);
+  text-underline-offset: 0.3rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.openness__link:hover {
+  font-weight: var(--font-weight-bolder);
+  text-decoration-color: var(--color-text-title);
+}
+
+.openness__images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap-main);
+}
+
+.openness__image {
+  object-fit: cover;
+  inline-size: 100%;
+  aspect-ratio: 1.777/1;
 }
 
 .initiative__budgeting__heading {
@@ -2674,56 +2707,6 @@ td:not(:first-of-type) {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--gap-main);
-}
-
-.national__projects__articles {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--gap-main);
-}
-
-.national__projects__article {
-  display: grid;
-  grid-template-rows: auto 1fr;
-}
-
-.national__projects__article__img {
-  object-fit: contain;
-  inline-size: 100%;
-  aspect-ratio: 1/1;
-}
-
-.national__projects__article__mains {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-radius: 6px;
-  box-shadow: 10px 10px 40px 0 #0000000d;
-  background: var(--color-text-on-the-dark);
-}
-
-.national__projects__article__main__header {
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  color: var(--color-text-on-the-dark);
-  background: var(--national-projects-color);
-}
-
-.national__projects__article__main {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  align-items: center;
-  gap: var(--gap-main);
-  padding: 14px;
-}
-
-.national__projects__article__main__title {
-  font-weight: bold;
-}
-
-.national__projects__article__main__value {
-  color: var(--color-text-on-the-dark);
-  font-weight: var(--font-weight-bold);
 }
 
 .awards__years {
@@ -2933,12 +2916,14 @@ td:not(:first-of-type) {
   position: relative;
   z-index: 1;
   margin: 4rem auto 0;
+  padding-inline: 5rem;
+  opacity: 0.6;
   color: var(--color-text-on-the-dark);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-xxs);
   line-height: var(--line-height-xxs);
   text-align: center;
-  text-transform: uppercase;
+  text-transform: lowercase;
   inline-size: clamp(30.625rem, -6.2027rem + 76.6246vw, 80rem);
 }
 
@@ -3348,7 +3333,7 @@ td:not(:first-of-type) {
   }
 
   .municipal__programs__heading__img {
-    aspect-ratio: 1.5/1;
+    aspect-ratio: 1.777/1;
   }
 
   .municipal__programs__heading__img:first-of-type {
@@ -3580,15 +3565,6 @@ td:not(:first-of-type) {
     inline-size: 50%;
   }
 
-  .coordinators__article:last-child::before {
-    left: -50%;
-    inline-size: 200%;
-  }
-
-  .coordinators__article:nth-child(-1n + 10) {
-    border-block-end: 1px solid #0000001a;
-  }
-
   .debt__load__block {
     display: flex;
     flex-direction: column;
@@ -3669,15 +3645,6 @@ td:not(:first-of-type) {
     inline-size: 100%;
   }
 
-  .national__projects__articles {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .national__projects__article__img {
-    margin: 0 auto;
-    inline-size: 75%;
-  }
-
   .awards__years {
     flex-direction: column;
   }
@@ -3693,6 +3660,20 @@ td:not(:first-of-type) {
 }
 
 @media (max-width: 768px) {
+@keyframes jump {
+    0% {
+      transform: translateX(-0.4rem);
+    }
+
+    50% {
+      transform: translateX(0.4rem);
+    }
+
+    100% {
+      transform: translateX(-0.4rem);
+    }
+}
+
   :root {
     --font-size-main: 17px;
     --font-size-xxl: 28px;
@@ -4118,6 +4099,7 @@ td:not(:first-of-type) {
     margin-block-end: 0.5rem;
     background: url("https://i.postimg.cc/hGTsb7Qq/3-1.png") no-repeat center /
       cover;
+    animation: jump 2s infinite linear;
     block-size: 30px;
     inline-size: 60px;
   }
@@ -4234,6 +4216,7 @@ td:not(:first-of-type) {
 
   .municipal__programs__text__link:hover {
     font-weight: bold;
+    text-decoration-color: var(--color-text-grey);
   }
 
   .municipal__programs__advice {
@@ -4510,11 +4493,7 @@ td:not(:first-of-type) {
     text-decoration-color: var(--color-text-grey);
   }
 
-  .coordinators__article:last-child::before {
-    display: none;
-  }
-
-  .coordinators__article:nth-child(-1n + 12) {
+  .coordinators__article:nth-child(-1n + 13) {
     border-block-end: 1px solid #0000001a;
   }
 
@@ -4536,6 +4515,29 @@ td:not(:first-of-type) {
     opacity: 0.1;
     inline-size: 100%;
     block-size: 100%;
+  }
+
+  .openness__link__block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .openness__link__img {
+    inline-size: 100%;
+  }
+
+  .openness__link___text {
+    text-align: center;
+  }
+
+  .openness__link:hover {
+    font-weight: bold;
+    text-decoration-color: var(--color-text-grey);
+  }
+
+  .openness__images {
+    display: flex;
+    flex-direction: column;
   }
 
   .initiative__budgeting__heading {
@@ -4565,10 +4567,6 @@ td:not(:first-of-type) {
 
   .initiative__budgeting__financing__circles__three .diagram__circle {
     inline-size: calc(50% - var(--gap-main));
-  }
-
-  .national__projects__articles {
-    grid-template-columns: 1fr;
   }
 
   .awards__articles {
@@ -4636,7 +4634,6 @@ td:not(:first-of-type) {
   }
 
   .footer__postcriptum {
-    padding: 0 1.125rem;
     inline-size: 100%;
   }
 }
@@ -4703,5 +4700,19 @@ td:not(:first-of-type) {
 
   .footer__logo {
     inline-size: 2rem;
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: rotate(-25deg) scale(1.3);
+  }
+
+  50% {
+    transform: rotate(-25deg) scale(1);
+  }
+
+  100% {
+    transform: rotate(-25deg) scale(1.3);
   }
 }
