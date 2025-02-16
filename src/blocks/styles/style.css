@@ -1285,6 +1285,10 @@ td:not(:first-of-type) {
   line-height: var(--line-height-xs);
 }
 
+.postscript__text__last {
+  margin-block-start: calc(-1 * var(--gap-main));
+}
+
 .income__head {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -2580,6 +2584,10 @@ td:not(:first-of-type) {
 .debt__load__predict__graphic__column__value {
   align-self: center;
   padding-inline-end: 0.5rem;
+}
+
+.debt__load .postscript__text__last {
+  text-align: end;
 }
 
 .debt__load__rating {
