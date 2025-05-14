@@ -433,6 +433,19 @@ body {
   gap: 0.75rem;
 }
 
+.navigation__list:first-child .navigation__item:first-child {
+  position: relative;
+}
+
+.navigation__link__cursor {
+  position: absolute;
+  top: 0.5rem;
+  left: 10rem;
+  object-fit: contain;
+  inline-size: 30px;
+  aspect-ratio: 1/1;
+}
+
 .navigation__link {
   color: var(--color-text-title);
   font-weight: bold;
@@ -1270,6 +1283,10 @@ td:not(:first-of-type) {
 .postscript__text {
   font-size: var(--font-size-xs);
   line-height: var(--line-height-xs);
+}
+
+.postscript__text__last {
+  margin-block-start: calc(-1 * var(--gap-main));
 }
 
 .income__head {
@@ -2569,6 +2586,10 @@ td:not(:first-of-type) {
   padding-inline-end: 0.5rem;
 }
 
+.debt__load .postscript__text__last {
+  text-align: end;
+}
+
 .debt__load__rating {
   display: flex;
   align-items: center;
@@ -2729,8 +2750,7 @@ td:not(:first-of-type) {
   gap: var(--gap-main);
 }
 
-.awards__years:nth-child(4) .awards__articles,
-.awards__years:last-child .awards__articles {
+.awards__years:nth-child(4) .awards__articles {
   grid-template-columns: repeat(3, 1fr);
 }
 
@@ -2743,9 +2763,8 @@ td:not(:first-of-type) {
   background: var(--color-text-on-the-dark);
 }
 
-.awards__years:last-child .awards__article:last-child {
-  grid-column-start: 1;
-  grid-column-end: 3;
+.awards__years:last-child .awards__article:nth-child(2) {
+  grid-column: span 2;
   grid-row-start: 1;
 }
 
@@ -2923,7 +2942,6 @@ td:not(:first-of-type) {
   font-size: var(--font-size-xxs);
   line-height: var(--line-height-xxs);
   text-align: center;
-  text-transform: lowercase;
   inline-size: clamp(30.625rem, -6.2027rem + 76.6246vw, 80rem);
 }
 
@@ -4097,8 +4115,7 @@ td:not(:first-of-type) {
     display: block;
     margin-left: auto;
     margin-block-end: 0.5rem;
-    background: url("https://i.postimg.cc/hGTsb7Qq/3-1.png") no-repeat center /
-      cover;
+    background: url("images/rotunda_logo.png") no-repeat center / cover;
     animation: jump 2s infinite linear;
     block-size: 30px;
     inline-size: 60px;
