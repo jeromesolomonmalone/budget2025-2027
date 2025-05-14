@@ -4119,8 +4119,7 @@ td:not(:first-of-type) {
     display: block;
     margin-left: auto;
     margin-block-end: 0.5rem;
-    background: url(https://i.postimg.cc/hGTsb7Qq/3-1.png) no-repeat center /
-      cover;
+    background: url(../images/rotunda_logo.png) no-repeat center / cover;
     animation: jump 2s infinite linear;
     block-size: 30px;
     inline-size: 60px;
